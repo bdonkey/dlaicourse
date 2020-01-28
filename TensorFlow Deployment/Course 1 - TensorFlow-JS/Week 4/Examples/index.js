@@ -62,6 +62,7 @@ async function predict() {
     const predictedClass = tf.tidy(() => {
       const img = webcam.capture();
       const activation = mobilenet.predict(img);
+      console.log("mobilenet act = ", activation)
       const predictions = model.predict(activation);
       return predictions.as1D().argMax();
     });
